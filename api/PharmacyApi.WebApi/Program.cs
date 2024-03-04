@@ -22,6 +22,15 @@ builder.Services.AddSwaggerGen(c =>
     c.IncludeXmlComments(xmlPath); // Includes XML documentation for Swagger UI.
 });
 
+// Add CORS policy
+builder.Services.AddCors(opts =>
+{
+    opts.AddPolicy("CorsPolicy", policyBuilder =>
+    {
+        policyBuilder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000");
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +39,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
