@@ -4,7 +4,7 @@ using PharmacyApi.Domain.IRepository;
 
 namespace PharmacyApi.WebApi;
 
-[Route("api/[controller]/[action]")]
+[Route("api/[controller]")]
 [ApiController]
 public class PharmacyController : ControllerBase
 {
