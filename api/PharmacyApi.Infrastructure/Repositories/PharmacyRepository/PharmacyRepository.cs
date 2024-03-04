@@ -14,6 +14,8 @@ public class PharmacyRepository : IPharmacyRepository<Pharmacy>
 
     public void Add(Pharmacy pharmacy)
     {
+        pharmacy.CreatedDate = DateTime.Now;
+        pharmacy.UpdatedDate = DateTime.Now;
         _pharmacyContext.Pharmacies.Add(pharmacy);
         _pharmacyContext.SaveChanges();
     }
@@ -41,6 +43,7 @@ public class PharmacyRepository : IPharmacyRepository<Pharmacy>
         currPharmacy.City = updPharmacy.City;
         currPharmacy.State = updPharmacy.State;
         currPharmacy.Zip = updPharmacy.Zip;
+        currPharmacy.NumberOfFilledPrescriptions = updPharmacy.NumberOfFilledPrescriptions;
         currPharmacy.UpdatedDate = DateTime.Now;
 
         _pharmacyContext.SaveChanges();
