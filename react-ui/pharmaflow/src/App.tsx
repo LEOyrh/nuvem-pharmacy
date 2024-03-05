@@ -17,9 +17,11 @@ function App() {
   return (
     <div>
       <Container className='main-style'>
-        <SearchBar onSearch={(term => setSearchTerm(term))} />
         {location.pathname === '/' ? (
-          <PharmacyTable searchTerm={searchTerm} />) : (
+          <Container>
+            <SearchBar onSearch={(term => setSearchTerm(term))} />
+            <PharmacyTable searchTerm={searchTerm} />
+          </Container>) : (
           <Container>
             <Outlet />
           </Container>
